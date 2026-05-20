@@ -1,0 +1,68 @@
+name: update-readme
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Refresh last-run line
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          run_json=$(gh api \
+            "repos/alexshabunin/qa-automation-portfolio/actions/workflows/ci.yml/runs?branch=main&event=push&per_page=1&status=completed")
+          conclusion=$(echo "$run_json" | jq -r '.workflow_runs[0].conclusion // "unknown"')
+          sha=$(echo "$run_json" | jq -r '.workflow_runs[0].head_sha[:7] // ""')
+          url=$(echo "$run_json" | jq -r '.workflow_runs[0].html_url // ""')
+          updated=$(echo "$run_json" | jq -r '.workflow_runs[0].updated_at // ""')
+          if [[ -z "$updated" ]]; then exit 0; fi
+
+          now_epoch=$(date -u +%s)
+          then_epoch=$(date -u -d "$updated" +%s)
+          delta=$(( now_epoch - then_epoch ))
+          if   (( delta < 3600  )); then ago="$(( delta / 60 ))m ago"
+          elif (( delta < 86400 )); then ago="$(( delta / 3600 ))h ago"
+          else                          ago="$(( delta / 86400 ))d ago"; fi
+
+          if [[ "$conclusion" == "success" ]]; then glyph="✓"; word="green"
+          else                                       glyph="✗"; word="$conclusion"
+          fi
+
+          line="<sub><b>Last CI run on qa-automation-portfolio:</b> ${glyph} <i>${word}</i> · <code>${sha}</code> · ${ago} · <a href=\"${url}\">run ↗</a></sub>"
+
+          python3 - "$line" <<'PY'
+          import re, sys, pathlib
+          line = sys.argv[1]
+          p = pathlib.Path("README.md")
+          t = p.read_text()
+          new = re.sub(
+              r"<!-- last-run starts -->.*?<!-- last-run ends -->",
+              f"<!-- last-run starts -->\n{line}\n<!-- last-run ends -->",
+              t, count=1, flags=re.DOTALL,
+          )
+          if new != t:
+              p.write_text(new)
+              print("updated")
+          else:
+              print("no change")
+          PY
+
+      - name: Commit if changed
+        run: |
+          if [[ -n "$(git status --porcelain README.md)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add README.md
+            git commit -m "chore: refresh last-run line"
+            git push
+          fi
