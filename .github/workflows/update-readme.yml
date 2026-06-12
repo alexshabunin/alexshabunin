@@ -19,8 +19,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
+          # No event filter: the portfolio's daily `schedule` runs must move
+          # this badge too, otherwise it goes stale between manual pushes.
           run_json=$(gh api \
-            "repos/alexshabunin/qa-automation-portfolio/actions/workflows/ci.yml/runs?branch=main&event=push&per_page=1&status=completed")
+            "repos/alexshabunin/qa-automation-portfolio/actions/workflows/ci.yml/runs?branch=main&per_page=1&status=completed")
           conclusion=$(echo "$run_json" | jq -r '.workflow_runs[0].conclusion // "unknown"')
           sha=$(echo "$run_json" | jq -r '.workflow_runs[0].head_sha[:7] // ""')
           url=$(echo "$run_json" | jq -r '.workflow_runs[0].html_url // ""')
