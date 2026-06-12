@@ -1,7 +1,7 @@
 # Alex Shabunin
 
 <!-- last-run starts -->
-<sub><b>Last CI run on qa-automation-portfolio:</b> ✓ <i>green</i> · <code>501c309</code> · 1h ago · <a href="https://github.com/alexshabunin/qa-automation-portfolio/actions/runs/27420369125">run ↗</a></sub>
+<sub><b>Last CI run on qa-automation-portfolio:</b> ✓ <i>green</i> · <code>501c309</code> · 6h ago · <a href="https://github.com/alexshabunin/qa-automation-portfolio/actions/runs/27420369125">run ↗</a></sub>
 <!-- last-run ends -->
 
 QA Automation Engineer. Python, Playwright, vedro, pytest, allure.
