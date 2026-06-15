@@ -2,7 +2,9 @@ name: update-readme
 
 on:
   schedule:
-    - cron: "17 */6 * * *"
+    # Hourly — GitHub cron is best-effort and skips slots under load; a tight
+    # interval keeps the "Last CI run" badge from drifting to "10h ago".
+    - cron: "17 * * * *"
   workflow_dispatch:
 
 permissions:
