@@ -29,6 +29,14 @@ from scratch and mentor manual testers into automation. I treat tests as
 **architecture, not checklists**: risk-based strategy, traceable coverage, and a
 CI signal that's honest about green.
 
+### 🎯 Focus Areas
+
+- API testing & validation (REST)
+- Test automation frameworks — Python · Pytest · Playwright
+- Microservice integrations, async flows & data consistency (Kafka, Redis)
+- Regression and end-to-end testing
+- CI/CD QA integration and release control
+
 ### 🧰 Tech Stack
 
 <p>
@@ -54,10 +62,32 @@ CI signal that's honest about green.
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=6AA9FF&height=2&section=footer" width="100%"/>
 
+### 💼 Core Skills & Tools
+
+**Automation:** Python, Pytest, Playwright, requests, Allure
+**API & Integration:** REST API, Postman, Swagger
+**Async / Messaging:** Apache Kafka, Redis
+**Databases:** PostgreSQL (SELECT / JOIN / aggregates), SQL
+**Debug & Observability:** Charles Proxy, Chrome DevTools, Grafana, Kibana, Sentry
+**Process & CI/CD:** GitLab CI, Jenkins, GitHub Actions, Docker, Jira, Confluence, Scrum
+
+### 🧠 Work Approach
+
+- 🧩 Build coverage around real business flows, not abstract checklists
+- 🕵️ Trace defects to root causes via logs and cross-service events
+- 📐 Treat tests as architecture — risk-based strategy, decisions written down (ADR)
+- ⚖️ Keep the CI signal honest: green means green, no flake budget
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=6AA9FF&height=2&section=footer" width="100%"/>
+
 ### 📌 Work
 
 - [**qa-automation-portfolio**](https://github.com/alexshabunin/qa-automation-portfolio) — the framework. One SPA tested **three ways** (pytest+POM, vedro+d42, REST API+JWT), plus the QA-lead paperwork: test strategy, ISO 29119-3 plan, and a requirement→risk→test→defect traceability matrix. [Live Allure ↗](https://alexshabunin.github.io/qa-automation-portfolio/)
 - [**pytest-no-retry**](https://github.com/alexshabunin/pytest-no-retry) — published pytest plugin. Aborts the session if a flake is being hidden behind reruns.
+
+### 🌎 Work Preferences
+
+Remote-first · English B2
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=6AA9FF&height=2&section=footer" width="100%"/>
 
