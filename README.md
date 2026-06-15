@@ -9,7 +9,7 @@ If it runs manually, it won't for long.
 
 Concentrated DLMM strategies on Meteora / Solana on the side.
 
-[alexshabunin.com](https://alexshabunin.com)  ·  [@waytoalex](https://t.me/waytoalex)
+[alexshabunin.com](https://alexshabunin.com)  ·  [Telegram](https://t.me/qa_shabunin)
 
 ## Work
 
