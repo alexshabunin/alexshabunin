@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: "30 2 * * *"   # daily; keeps the snake fresh
   workflow_dispatch:
-  push:
-    branches: [main]
 
 permissions:
   contents: write
