@@ -13,7 +13,7 @@
 </p>
 
 <!-- last-run starts -->
-<sub><b>Last CI run on qa-automation-portfolio:</b> ✗ <i>failure</i> · <code>0ad7eba</code> · 3h ago · <a href="https://github.com/alexshabunin/qa-automation-portfolio/actions/runs/34215942291">run ↗</a></sub>
+<sub><b>Last CI run on qa-automation-portfolio:</b> ✓ <i>green</i> · <code>0ad7eba</code> · 2h ago · <a href="https://github.com/alexshabunin/qa-automation-portfolio/actions/runs/34247938298">run ↗</a></sub>
 <!-- last-run ends -->
 
 <p align="center">
